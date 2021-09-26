@@ -56,7 +56,7 @@ function Header() {
            
                 <h1>
                 <img src={fclogo} alt="logo" width="140" className="logo_fc" />
-                    <Link to="/">{isAdmin ? 'Admin' : ''}</Link>
+                    <Link to="/" className="fc_h" >{isAdmin ? 'फार्मकार्टAdmin' : 'फार्मकार्ट'}</Link>
                 </h1>
             </div>
 
@@ -90,3 +90,4 @@ function Header() {
 }
 
 export default Header
+
