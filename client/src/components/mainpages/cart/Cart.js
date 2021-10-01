@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react'
+iimport React, {useContext, useState, useEffect} from 'react'
 import {GlobalState} from '../../../GlobalState'
 import axios from 'axios'
 import PaypalButton from './PaypalButton'
@@ -64,9 +64,17 @@ function Cart() {
         }
     }
 
-    const tranSuccess = async(payment) => {
-        const {paymentID, address} = payment;
+    const tranSuccess = async() => {
+       console.log( localStorage.getItem("userDetails"))
+        const address = {
+            "recipient_name":"PRASAD",
+            "line1":"SHIVAJI NAGAR",
+            "city":"PUNE",
+            "postal_code":"444400",
+            "country_code":"IND"
+          } 
 
+          const paymentID = Math.floor(Math.random() * 1000000000);
         await axios.post('/api/payment', {cart, paymentID, address}, {
             headers: {Authorization: token}
         })
@@ -114,9 +122,11 @@ function Cart() {
                 <PaypalButton
                 total={total}
                 tranSuccess={tranSuccess} />
+                <button className="dummy_btn "onClick={() => tranSuccess()}> Dummy Payment</button>
             </div>
         </div>
     )
 }
 
 export default Cart
+
